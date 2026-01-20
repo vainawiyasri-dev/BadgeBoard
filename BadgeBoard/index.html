@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elite Badge Board</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0f111a;
+      color: #fff;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: #5ab6e6;
+      margin-bottom: 2rem;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    .badge-board {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      row-gap: 6rem;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .badge {
+      background: #1a1c2b;
+      border-radius: 7px;
+      padding: 0.9rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .badge img {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      object-fit: contain;
+      margin-bottom: 0.8rem;
+      transition: transform 0.3s;
+    }
+
+    .badge:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+    .badge-board .badge:nth-child(1) img {
+        width: auto; 
+        height: 178px;
+        margin-left: 12px;
+        margin-right: 12px;
+    }
+.badge-board .badge:nth-child(3) img {
+        width: 150px; 
+        height: 178px;
+        margin-left: 12px;
+        margin-right: 12px;
+    }
+    .badge-board .badge:nth-child(4) img {
+        width: 170px; 
+        height: 178px;
+        margin-left: 12px;
+        margin-right: 12px;
+    }
+    .badge-board .badge:nth-child(5) img {
+        width: 180px; 
+        height: 178px;
+        margin-left: 12.5px;
+        margin-right: 12.5px;
+    }
+.badge-board .badge:nth-child(6) img {
+        width: 150px; 
+        height: 178px;
+        margin-left: 12.5px;
+        margin-right: 12.5px;
+    }
+.badge-board .badge:nth-child(7) img {
+        width: 150px; 
+        height: 178px;
+        margin-left: 12.5px;
+        margin-right: 12.5px;
+    }
+    .badge-board .badge:nth-child(8) img {
+        width: 150px; 
+        height: 178px;
+        margin-left: 12.5px;
+        margin-right: 12.5px;
+    }
+     .badge-board .badge:nth-child(9) img {
+        width: 150px; 
+        height: 178px;
+        margin-left: 12.5px;
+        margin-right: 12.5px;
+    }
+     .badge-board .badge:nth-child(10) img {
+        width: 178px; 
+        height: 178px;
+        margin-left: 12.5px;
+        margin-right: 12.5px;
+    }
+
+
+    .badge:hover img {
+      transform: scale(1.1);
+    }
+
+    .badge a {
+      color: #5ab6e6;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      word-break: break-word;
+    }
+
+    /* Tooltip styling */
+    .badge .tooltip {
+  position: absolute;
+  top: 110%;              /* move tooltip below */
+  background: rgba(90, 182, 230, 0.95);
+  color: #0f111a;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, transform 0.3s;
+  width: max-content;
+  max-width: 180px;
+  text-align: center;
+  z-index: 10;
+  transform: translateY(-5px);
+}
+
+.badge:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+  </style>
+</head>
+<body>
+
+  <h1>Vainawiyasri's Badge Board</h1>
+
+  <div class="badge-board" id="badgeBoard"></div>
+
+  <script>
+    const badges = [
+      { name: "Web Development Fundamentals", img: "web-dev-fundamentals.png", url: "https://www.credly.com/badges/7a155a64-e459-4dd9-8f23-3d7f34a94ee0/public_url", desc: "Completed Web Development Fundamentals (Html, CSS3 and Javascript)" },
+      { name: "Salesforce Certified Agentforce Specialist", img: "servlet.png", url: "https://trailheadacademy.salesforce.com/certificate/exam-agentforce-specialist---AI-201", desc: "As a Certified Agentforce Specialist, I'm responsible for managing and optimizing Agentforce" },
+      { name: "The MERN Stack & FSD", img: "MERN & FSD.png", url: "https://skillsoft.digitalbadges.skillsoft.com/dac79cbc-16a9-4832-9c2d-795454301bd5#acc.pK4UHf5r", desc: "Completed MERN Stack Fundamentals with a Capstone project" },
+      { name: "Gen AI Fundamentals", img: "DB.png", url: "https://credentials.databricks.com/9a552c94-2511-4030-a6f3-1cba382cda03#acc.fTWcrtDO", desc: "Gained strong foundations on Generative AI" },
+      { name: "Web Apps with Firebase", img: "Firebase.png", url: "https://developers.google.com/profile/u/110086319875431334450?utm_source=firebase.google.com", desc: "Intergrated Firebase Authentication on Web Applications" },
+      { name: "Kaggle Community Member", img: "K.png", url: "https://www.kaggle.com/certification/badges/vainawiyasrijs/101", desc: "Recognizes active participation in the Kaggle community." },
+      { name: "Blockchain Masterclass", img: "blockchain.png", url: "https://cfte.thinkific.com/certificates/rci7nmum6s", desc: "Explore essential concepts such as Decentralised Ledger Technologies (DLT), smart contracts, digital identities, cryptocurrencies, DeFi" },
+      { name: "API Essentials: Mastering Testing and Collaboration with AI", img: "PM.png", url: "https://postman.badges.parchment.com/public/assertions/oR4l49tWT4eXD7u1C3dMLQ?identity__email=vainawiyasrisivakumar.04@gmail.com", desc: "Applied artificial intelligence concepts to streamline and enhance API testing strategies." },
+      { name: "AI for Product Management", img: "PMA.png", url: "https://www.credly.com/badges/133a4774-184f-47f5-b770-3319f9450ee5/public_url", desc: "  I have demonstrated my knowledge of AI for product management, including leveraging AI throughout the development life cycle and building AI-powered features." },
+      { name: "Problem Solver", img: "HR.png", url: "https://www.hackerrank.com/profile/vainawiyasrisiv1", desc: "Earned through consistent problem-solving practice on HackerRank." },
+      ];
+
+    const badgeBoard = document.getElementById("badgeBoard");
+
+    badges.forEach(badge => {
+      const div = document.createElement("div");
+      div.className = "badge";
+      div.innerHTML = `
+        <img src="${badge.img}" alt="${badge.name}">
+        <a href="${badge.url}" target="_blank">${badge.name}</a>
+        <div class="tooltip">${badge.desc}</div>
+      `;
+      badgeBoard.appendChild(div);
+    });
+  </script>
+
+</body>
+</html>
